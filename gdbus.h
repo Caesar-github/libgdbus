@@ -24,9 +24,9 @@
 #ifndef __GDBUS_H
 #define __GDBUS_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+//#ifdef __cplusplus
+//extern "C" {
+//#endif
 
 #include <dbus/dbus.h>
 #include <glib.h>
@@ -45,10 +45,14 @@ typedef void (* GDBusMessageFunction) (DBusConnection *connection,
 
 typedef gboolean (* GDBusSignalFunction) (DBusConnection *connection,
 					DBusMessage *message, void *user_data);
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 DBusConnection *g_dbus_setup_bus(DBusBusType type, const char *name,
 							DBusError *error);
-
+#ifdef __cplusplus
+}
+#endif
 DBusConnection *g_dbus_setup_private(DBusBusType type, const char *name,
 							DBusError *error);
 
@@ -387,8 +391,8 @@ gboolean g_dbus_client_set_proxy_handlers(GDBusClient *client,
 					GDBusPropertyFunction property_changed,
 					void *user_data);
 
-#ifdef __cplusplus
-}
-#endif
+//#ifdef __cplusplus
+//}
+//#endif
 
 #endif /* __GDBUS_H */
